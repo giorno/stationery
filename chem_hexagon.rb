@@ -67,6 +67,6 @@ end # ::Stationery
 end # ::Creat
 end # ::Io
 
-chem_hexagon = Io::Creat::Stationery::ChemHexagon.new(210, 297, 5, 6.4, 0.5)
+chem_hexagon = Io::Creat::Stationery::ChemHexagon.new(210, 297, 5, 6.4, 0.7)
 puts chem_hexagon.render()
 

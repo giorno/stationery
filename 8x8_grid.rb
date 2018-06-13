@@ -27,12 +27,12 @@ module Io module Creat module Stationery
       y_mm = @border_mm + @step_mm * ( ( @height_mm - 2 * @border_mm ) / @step_mm ).round
       
       while x_mm <= @width_mm - @border_mm do
-        @img.line(x_mm, @border_mm - @thickness_mm / 2, x_mm, y_mm + @thickness_mm / 2)
+        @img.line(x_mm, @border_mm - @thickness_mm / 2, x_mm, y_mm + @thickness_mm / 2, @style)
         x_mm += @step_mm
       end
       y_mm = @border_mm
       while y_mm <= @height_mm - @border_mm do
-        @img.line(@border_mm - @thickness_mm / 2, y_mm, @width_mm - @border_mm + @thickness_mm / 2, y_mm)
+        @img.line(@border_mm - @thickness_mm / 2, y_mm, @width_mm - @border_mm + @thickness_mm / 2, y_mm, @style)
         y_mm += @step_mm
       end
       output = ''

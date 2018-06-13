@@ -27,15 +27,23 @@ module Io module Creat module Stationery
     # / \
     private
     def star(x_mm, y_mm)
+      # corrections for joining stars
+      bdx_mm = @thickness_mm / 4 # horizontal correction of the bottom arms endpoints
+      bdy_mm = @thickness_mm / (4 * Math.sqrt(3)) # vertical correction of the bottom arms endpoints
+      tdy_mm = (Math.cos(Math::PI / 6) - 1 / (2 * Math.sqrt(3))) * @thickness_mm / 2
+
+      # render the star
       if y_mm > @border_mm and y_mm < @height_mm - @border_mm and y_mm - @radius_mm > @border_mm and y_mm - @radius_mm < @height_mm - @border_mm then
-        @img.line(x_mm, y_mm, x_mm, y_mm - @radius_mm, @style)
+        @img.line(x_mm, y_mm + tdy_mm, x_mm, y_mm - @radius_mm - tdy_mm, @style)
       end
       w_mm = @radius_mm * Math.cos(Math::PI / 6);
+      # left arm
       if x_mm - w_mm >= @border_mm then
-        @img.line(x_mm, y_mm, x_mm - w_mm, y_mm + @radius_mm * Math.sin(Math::PI / 6), @style)
+        @img.line(x_mm + bdx_mm, y_mm - bdy_mm, x_mm - w_mm - bdx_mm, y_mm + @radius_mm * Math.sin(Math::PI / 6) + bdy_mm, @style)
       end
+      # right arm
       if x_mm + w_mm <= @width_mm - @border_mm then
-        @img.line(x_mm, y_mm, x_mm + w_mm, y_mm + @radius_mm * Math.sin(Math::PI / 6), @style)
+        @img.line(x_mm - bdx_mm, y_mm - bdy_mm, x_mm + w_mm + bdx_mm, y_mm + @radius_mm * Math.sin(Math::PI / 6) + bdy_mm, @style)
       end
     end # star
 

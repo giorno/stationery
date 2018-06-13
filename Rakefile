@@ -6,6 +6,7 @@ task :build => [:pdf]
 
 rb_files = Rake::FileList.new()
 rb_files.include("chem_hexagon.rb")
+rb_files.include("8x8_grid.rb")
 
 svg_files = Rake::FileList.new("/*.svg")
 

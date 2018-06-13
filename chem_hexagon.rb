@@ -35,7 +35,6 @@ module Io module Creat module Stationery
     def render()
       h_mm = @radius_mm * (1 + Math.sin(Math::PI / 6))
       step_mm = 2 * @radius_mm * Math.cos(Math::PI / 6)
-      $stderr.puts step_mm
       x_mm = step_mm / 2
       y_mm = step_mm / 2
       while y_mm < @height_mm do
@@ -58,6 +57,6 @@ end # ::Stationery
 end # ::Creat
 end # ::Io
 
-chem_hexagon = Io::Creat::Stationery::ChemHexagon.new(210, 297, 6.3, 0.1)
+chem_hexagon = Io::Creat::Stationery::ChemHexagon.new(210, 297, 6.3, 0.5)
 puts chem_hexagon.render()
 

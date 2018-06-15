@@ -4,6 +4,8 @@ task :default => :build
 
 task :build => [:pdf]
 
+task :rebuild => [:clean, :build]
+
 rb_files = Rake::FileList.new()
 rb_files.include("chem_hexagon.rb")
 rb_files.include("8x8_grid.rb")
